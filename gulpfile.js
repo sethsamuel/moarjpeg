@@ -24,7 +24,12 @@ gulp.task("styles", function(){
 		.pipe(gulp.dest("dist/css"));
 });
 
-gulp.task("build", ["views", "scripts", "styles"]);
+gulp.task("images", function(){
+	gulp.src("src/images/*")
+		.pipe(gulp.dest("dist/images"));
+});
+
+gulp.task("build", ["views", "scripts", "styles", "images"]);
 
 gulp.task("watch", function(){
 	gulp.watch("src/**/*", ["build"]);
