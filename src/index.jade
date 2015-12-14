@@ -1,6 +1,11 @@
 html
 	head
 		title Moar JPEG
+		link(href="css/index.css" rel="stylesheet")
 	body
-		canvas
+		canvas(id="canvas")
+		img#get-img
+		img#jpg-img
+		button#generate-canvas Generate from canvas
+		button#generate-jpeg Generate with jpeg-js
 		script(src="js/index.js")
