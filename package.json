@@ -1,0 +1,30 @@
+{
+  "name": "moarjpeg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd dist; python -m SimpleHTTPServer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sethsamuel/moarjpeg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sethsamuel/moarjpeg/issues"
+  },
+  "homepage": "https://github.com/sethsamuel/moarjpeg",
+  "devDependencies": {
+    "babel-core": "^6.3.17",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "gulp": "^3.9.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-webpack": "^1.5.0",
+    "webpack": "1.12.9"
+  }
+}
