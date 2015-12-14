@@ -5,7 +5,7 @@ const context = canvas.getContext("2d");
 context.fillStyle = "rgb(255,255,255)";
 context.fillRect(0,0,canvas.width,canvas.height);
 
-const quality = 10;
+let quality = 10;
 
 const blair = new Image();
 blair.addEventListener("load", () => {
@@ -29,5 +29,12 @@ document.getElementById("generate-jpeg").addEventListener("click", () => {
 	const img = document.getElementById("jpg-img").src = 'data:image/jpeg;base64,' + jpegImageData.data.toString("base64");
 	console.timeEnd(timerId);
 });
+
+document.getElementById("quality").addEventListener("change", () => {
+	quality = document.getElementById("quality").value;
+
+});
+
+document.getElementById("quality").value = quality;
 
 console.log("MOAR", canvas);
