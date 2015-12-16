@@ -3,6 +3,7 @@ var gulp = require("gulp");
 var jade = require("gulp-jade");
 var sass = require("gulp-sass");
 var webpack = require("gulp-webpack");
+var named = require("vinyl-named");
 
 gulp.task("views", function(){
 	gulp.src("src/*.jade")
@@ -13,7 +14,8 @@ gulp.task("views", function(){
 });
 
 gulp.task("scripts", function(){
-	gulp.src("src/js/*")
+	gulp.src(["src/js/index.js","src/js/jpeg-worker.js"])
+		.pipe(named())
 		.pipe(webpack(require("./webpack.config.js")))
 		.pipe(gulp.dest("dist/js"));
 });

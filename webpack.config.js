@@ -1,6 +1,6 @@
 module.exports = {
 	output: {
-		filename: "index.js"
+		filename: "[name].js"
 	},
 	module:{
 		loaders: [
@@ -13,5 +13,10 @@ module.exports = {
 				}
 			}
 		]
+	},
+	worker: {
+		output: {
+			filename: "[name].worker.js"
+		}
 	}
 }
