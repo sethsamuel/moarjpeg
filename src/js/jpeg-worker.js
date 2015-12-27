@@ -1,8 +1,11 @@
 const jpeg = require("jpeg-js");
 
 onmessage = (e) =>{
-	const data = new Uint8ClampedArray(e.data.data);
-	const encode = jpeg.encode({width: e.data.width, height: e.data.height, data: data}, parseInt(e.data.quality));
-	// postMessage({width: encode.width, height: encode.height, data: encode.data.buffer}, [encode.data.buffer]);
-	postMessage({url: encode.data.toString("base64")})
+	const canvas = new Canvas();
+	canvas.width = e.data.width;
+	canvas.height = e.data.height;
+	const context = canvas.getContext('2d');
+	context.putImageData(e.data, 0, 0, canvas.width, canvas.height);
+	const url = canvas.toDataURL("image/jpeg", quality/100);
+	postMessage({url: url});
 }
