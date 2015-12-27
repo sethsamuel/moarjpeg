@@ -1,4 +1,3 @@
-// const Worker = require("worker!./jpeg-worker");
 const worker = new Worker("js/jpeg-worker.js");
 
 const canvas = document.getElementById("canvas");
