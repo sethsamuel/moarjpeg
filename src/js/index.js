@@ -14,12 +14,23 @@ blair.src = "images/blair.jpg";
 const generateCanvas = (quality) => {
 	const timerId = "Generate";
 	console.time(timerId);
-	const url = canvas.toDataURL("image/jpeg", quality/100);
-	const img = document.getElementById("get-img").src = url;
+	const tmpImage = new Image();
+	const tmpCanvas = document.getElementById("tmp-canvas")
+	const tmpContext = tmpCanvas.getContext("2d");
+	let dataUrl;
+	let iterationCount = 1000;
+	do{
+		dataUrl = canvas.toDataURL("image/jpeg", quality/100);
+		tmpImage.src = dataUrl;
+		tmpContext.drawImage(tmpImage, 0, 0, tmpCanvas.width, tmpCanvas.height);
+		dataUrl = tmpCanvas.toDataURL("image/jpeg", quality/100);
+	}while(iterationCount--)
+	const img = document.getElementById("get-img").src = dataUrl;
 	console.timeEnd(timerId);
 }
 
 const generateJpeg = (quality) => {
+	return;
 	const timerId = "JPEG";
 	console.time(timerId);
 	const data = context.getImageData(0,0,canvas.width,canvas.height);
