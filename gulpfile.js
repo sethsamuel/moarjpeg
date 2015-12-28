@@ -22,8 +22,8 @@ gulp.task("scripts", function(){
 });
 
 gulp.task("server", function(){
-	gulp.src(["src/js/index.js"])
-		.pipe(babel())
+	gulp.src("src/js/server/**/*.js")
+		.pipe(babel({presets: ["es2015"]}).on("error", function(e){console.error(e.stack);}))
 		.pipe(gulp.dest("dist"));
 });
 
@@ -38,7 +38,7 @@ gulp.task("images", function(){
 		.pipe(gulp.dest("dist/public/images"));
 });
 
-gulp.task("build", ["views", "scripts", "server", "styles", "images"]);
+gulp.task("build", ["views", "server", "scripts", "styles", "images"]);
 
 gulp.task("watch", function(){
 	gulp.watch("src/**/*", ["build"]);

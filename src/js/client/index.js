@@ -1,5 +1,7 @@
 const worker = new Worker("js/jpeg-worker.js");
 
+const reqwest = require("reqwest");
+
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 context.fillStyle = "rgb(255,255,255)";
@@ -12,6 +14,7 @@ blair.addEventListener("load", () => {
 blair.src = "images/blair.jpg";
 
 const generateCanvas = (quality) => {
+	return;
 	const timerId = "Generate";
 	console.time(timerId);
 	const tmpImage = new Image();
@@ -29,6 +32,21 @@ const generateCanvas = (quality) => {
 	console.timeEnd(timerId);
 }
 
+const generateServer = (quality) => {
+	reqwest({
+		url: "jpeg",
+		method: "POST",
+		type: "json",
+		contentType: "application/json",
+		processData: false,
+		data: JSON.stringify({image: canvas.toDataURL("image/jpeg", 100)})
+	})
+	.then((response) => {
+		const image = document.getElementById("server-img");
+		image.src = response.dataUrl;
+	});
+}
+
 const generateJpeg = (quality) => {
 	return;
 	const timerId = "JPEG";
@@ -40,6 +58,8 @@ const generateJpeg = (quality) => {
 		console.timeEnd(timerId);
 	}
 }
+
+document.getElementById("generate-server").addEventListener("click", () => generateServer(document.getElementById("quality").value));
 
 document.getElementById("generate-canvas").addEventListener("click", () => generateCanvas(document.getElementById("quality").value));
 
@@ -53,6 +73,7 @@ document.getElementById("generate-opengl").addEventListener("click", () => {
 
 document.getElementById("quality").addEventListener("input", () => {
 	const quality = document.getElementById("quality").value;
+	generateServer(quality);
 	generateCanvas(quality);
 	generateJpeg(quality);
 
