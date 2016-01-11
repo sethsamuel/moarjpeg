@@ -15,6 +15,7 @@ app.use(function *(next){
 app.use(koaStatic("public"));
 app.use(koaBody({jsonLimit: 100*1000}));
 app.use(function *(next){
+	if(!this.request.body.image) return yield next;
 	const prefix = "data:image/jpeg;base64,";
 	const imageData = this.request.body.image.slice("data:image/jpeg;base64,".length);
 	const imageInBuffer = new Buffer(imageData, "base64");

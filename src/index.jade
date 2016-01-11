@@ -3,16 +3,21 @@ html
 		title Moar JPEG
 		link(href="css/index.css" rel="stylesheet")
 	body
-		.images
-			canvas(id="canvas",width=480,height=320)
-			img#get-img
-			img#jpg-img
-			img#server-img
 		.buttons
-			button#generate-canvas Generate from canvas
-			button#generate-server Generate from server
-			button#generate-jpeg Generate with jpeg-js
-			button#generate-opengl Generate with opengl-js
-			input#quality(type="range",min=1,max=100)
+			button#generate Generate
+			button Clicky
+		.images
+			.image
+				canvas#blair-canvas(width=480,height=320)
+				img#blair-img
+			.image
+				canvas#aeryn-canvas(width=480,height=320)
+				img#aeryn-img
+			.image
+				canvas#red-canvas(width=480,height=320)
+				img#red-img
+			.image
+				canvas#checkers-canvas(width=480,height=320)
+				img#checkers-img
 		canvas(id="tmp-canvas",width=480,height=320,style="display:none;")
 		script(src="js/index.js")

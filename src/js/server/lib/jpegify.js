@@ -2,7 +2,7 @@ import gm from "gm";
 
 export default function*(imageInBuffer){
 	let tmpBuffer = imageInBuffer;
-	let iterationCount = 1000;
+	let iterationCount = 500;
 	while(iterationCount--){
 		tmpBuffer = yield jpeg(tmpBuffer);
 	}
