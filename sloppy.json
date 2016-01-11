@@ -1,0 +1,25 @@
+{
+	"project": "moarjpeg",
+	"services": [
+		{
+			"id": "server",
+			"apps": [
+				{
+					"id": "http",
+					"domain": {
+						"uri": "sethfsamuel-moarjpeg.sloppy.zone",
+						"type": "HTTP"
+					},
+					"mem": 128,
+					"image": "sethfsamuel/moarjpeg",
+					"instances": 4,
+					"port_mappings": [
+						{
+							"container_port": 8000
+						}
+					]
+				}
+			]
+		}
+	]
+}
